@@ -12,7 +12,7 @@ Rafflesia::Application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
 
-  resources :home
-
+  resources :home, only: [:index, :new, :create, :destroy, :update, :show]
+  get ":phone/data.xml" => "home#show", format: "xml"
 
 end

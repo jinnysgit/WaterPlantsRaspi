@@ -4,6 +4,18 @@ class HomeController < ApplicationController
 	def index
 	end
 
+	def show
+		if	User.find_by(phone_number: params[:phone]).nil?
+			redirect_to root_path
+		else
+			@user = User.find_by(phone_number: params[:phone])
+			@raspberries = @user.raspberries
+			respond_to do |format|
+				format.xml
+			end
+		end
+	end
+
 	def create
 		if User.find_by(phone_number: params[:phone_number]).nil?
 			a = User.new
