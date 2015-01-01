@@ -16,6 +16,10 @@ class HomeController < ApplicationController
 		end
 	end
 
+	# Interface for create action
+	def new
+	end
+
 	def create
 		if User.find_by(phone_number: params[:phone_number]).nil?
 			a = User.new
@@ -38,6 +42,22 @@ class HomeController < ApplicationController
 	def update
 	end
 
-	def new
+	# Interface for destroy action
+	def delete
+	end
+
+	def destroy
+		user = User.find_by(phone_number: params[:phone_number])
+		if user.present?
+			raspberry = user.raspberries.find_by(serial_number: params[:serial_number])
+			if raspberry.present?
+				raspberry.destroy
+				redirect_to delete_path
+			else
+				redirect_to root_path
+			end
+		else
+			redirect_to root_path
+		end
 	end
 end
