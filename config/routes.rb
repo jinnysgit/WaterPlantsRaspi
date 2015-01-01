@@ -11,6 +11,6 @@ Rafflesia::Application.routes.draw do
 
   # Interface for destory action
   get "/delete" => "home#delete"
-  post "/destory" => "home#destroy"
+  post "/destroy" => "home#destroy"
 
 end
