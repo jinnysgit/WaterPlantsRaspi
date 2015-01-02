@@ -5,7 +5,7 @@ temperature = subprocess.Popen(["sudo", "/home/pi/client/rpiADC", "0"], stdout=s
 humidity = subprocess.Popen(["sudo", "/home/pi/client/rpiADC", "1"], stdout=subprocess.PIPE)
 moisture = subprocess.Popen(["sudo", "/home/pi/client/rpiADC", "2"], stdout=subprocess.PIPE)
 
-url = 'http://192.168.203.12:3000/home/update'
+url = 'http://203.247.166.59/home/update'
 
 params = urllib.urlencode({
         'serial_number': 'A2FDDF',
