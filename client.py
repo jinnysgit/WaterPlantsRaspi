@@ -2,7 +2,7 @@ import urllib
 import subprocess
 import time
 
-serial_number = '2015AAA'
+serial_number = '2015AAS'
 url = 'http://203.247.166.59/home/update'
 
 

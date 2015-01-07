@@ -11,6 +11,8 @@
 #define SPI_CHANNEL 0
 #define SPI_SPEED   1000000   // 1MHz
 
+#define VCC 4.8               // Supply Voltage
+
 int read_mcp3208_adc(unsigned char adcChannel)
 {
   unsigned char buff[3];
@@ -68,13 +70,13 @@ int main (int argc, char *argv[])
 
   if(adcChannel==0)
   {
-    adcValue = read_mcp3208_adc(0) / 10; // Humidity Sensor
-    // adcValue = ((adcValue*0.001172161 - 0.48)/3.84) * 100;
+    adcValue =read_mcp3208_adc(0); // Temperature Sensor
+    adcValue = ((adcValue*5.0/4095.0)*200.0-50.0)/0.8;
   }
   else if(adcChannel==1)
   {
-    adcValue = read_mcp3208_adc(1) / 10; // Temperature Sensor
-    // adcValue = ((adcValue*0.001172161 - 0.48)/3.84) * 200 - 50;
+    adcValue =read_mcp3208_adc(1); // Humidity Sensor
+    adcValue =(adcValue*5.0/4095.0)*100/0.8;
   }
   else if(adcChannel==2)
   {
